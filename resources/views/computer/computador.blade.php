@@ -1,26 +1,23 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{route('computer.model')}}" method="POST" enctype="multipart/form-data">
+@extends('layouts.app')
+
+@section('content')
+<div class="card shadow p-4">
+    <h2 class="mb-4 text-center">Registro de Computador</h2>
+
+    <form action="{{ route('computer.model') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label>
-            Numero:
-            <br>
-            <input type="number" name="numero">
-        </label>
-        <br>
-        <label>
-            Marca:
-            <br>
-            <input type="text" name="marca">
-        </label>
-        <br><br>
-        <button type="submit">Enviar Formulario:</button>
+        
+        <div class="mb-3">
+            <label class="form-label">Número del Equipo:</label>
+            <input type="number" name="numero" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Marca del Dispositivo:</label>
+            <input type="text" name="marca" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Guardar Computador</button>
     </form>
-</body>
-</html>
+</div>
+@endsection

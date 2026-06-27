@@ -24,4 +24,14 @@ class Teacher extends Model
     public function courses(){
         return $this->belongsToMany('App\Models\course');
     }
+
+
+
+    protected $fillable = [
+        'name',
+        'email',
+        'area_id',
+        'training_center_id',
+       
+    ];
 }

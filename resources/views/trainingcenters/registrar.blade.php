@@ -1,28 +1,24 @@
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('content')
+<div class="card shadow p-4">
+    <h2 class="mb-4 text-center">Registro de Centro de Formación</h2>
 
-<body>
     <form action="{{ route('trainingcenters.datos') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label>
-            Nombre:
-            <br>
-            <input type="text" name="name">
-        </label>
-        <br>
-        <label>
-            Ubicacion:
-            <br>
-            <input type="text" name="location">
-        </label>
-        <br><br>
-        <button type="submit">Enviar Formulario:</button>
-    </form>
-</body>
+        
+        <div class="mb-3">
+            <label class="form-label">Nombre del Centro:</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Ubicación del Centro:</label>
+            <input type="text" name="location" class="form-control" required>
+        </div>
 
-</html>
+
+        <button type="submit" class="btn btn-primary w-100">Guardar Centro</button>
+    </form>
+</div>
+@endsection

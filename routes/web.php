@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TrainingCenterController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +30,12 @@ Route::post('trainingcenter/dato',[TrainingCenterController::class,'dato'])->nam
 
 Route::get('computer/computador',[ComputerController::class,'marca'])->name('computer.computador');
 Route::post('computer/model',[ComputerController::class,'model'])->name('computer.model');
+
+Route::get('teacher/registro',[TeacherController::class,'registro'])->name('teacher.registro');
+Route::post('teacher/admin',[TeacherController::class,'dato'])->name('teacher.admin');
+
+Route::get('course/registro',[CourseController::class,'registro'])->name('course.registro');
+Route::post('course/admin',[CourseController::class,'dato'])->name('course.admin');
+
+Route::get('Aprendice/registro',[ApprenticeController::class,'registro'])->name('Aprendice.registro');
+Route::post('Aprendice/admin',[ApprenticeController::class,'dato'])->name('Aprendice.admin');
