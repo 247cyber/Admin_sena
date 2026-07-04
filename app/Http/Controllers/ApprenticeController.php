@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class ApprenticeController extends Controller
 {
+     public function index(){
+
+        $apprentices=Apprentice::all();
+
+        return view('Aprendice.index',compact('apprentices'));
+     }
     //
 
     public function registro(){
@@ -21,7 +27,7 @@ class ApprenticeController extends Controller
     }
     
     public function dato(Request $request){
-        Aprentice::create($request->all());
+        Apprentice::create($request->all());
     }
 
 
