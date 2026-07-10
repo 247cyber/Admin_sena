@@ -11,25 +11,34 @@ use Illuminate\Http\Request;
 
 class ApprenticeController extends Controller
 {
-     public function index(){
+    //
+    public function index(){
 
         $apprentices=Apprentice::all();
 
-        return view('Aprendice.index',compact('apprentices'));
-     }
-    //
+        return view('aprendice.index',compact('apprentices'));
+
+
+    }
 
     public function registro(){
 
      $courses=Course::all();
      $computers=Computer::all();
-        return view('Aprendice.registro', compact('courses', 'computers'));
+        return view('aprendice.registro',compact('courses','computers'));
     }
     
     public function dato(Request $request){
         Apprentice::create($request->all());
     }
+    
+    public function show ($id){
 
+     $apprentices=Apprentice::find($id);
+       return view('apprentice.show',compact('apprentices'));
+
+
+    }
 
     
 }

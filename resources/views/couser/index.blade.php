@@ -1,30 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
-    <div class="card shadow">
-        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
-            <h4 class="mb-0">Lista de Cursos</h4>
-            <a href="{{ route('course.registro') }}" class="btn btn-light btn-sm fw-bold">Nuevo Curso</a>
-        </div>
-        <div class="table-responsive p-3">
-            <table class="table table-striped table-hover align-middle text-center">
-                <thead class="table-dark">
+    <h1 class="text-center my-4">LISTA DE CURSOS</h1>
+
+    <div class="container">
+        <table id="idCourse" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Numero de curso</th>
+                    <th>dia</th>
+                    <th>area_id</th>
+                    <th>training_center_id</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <a href="{{ route('course.registro') }}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Nuevo curso
+                </a>
+                <br><br>
+                @foreach ($courses as $course)
                     <tr>
-                        <th>ID</th>
-                        <th>Número de Ficha / Curso</th>
+                        <td>{{ $course->id }}</td> 
+                        <td>{{ $course->course_number}}</td> 
+                        <td>{{ $course->day}}</td> 
+                        <td>{{ $course->area_id }}</td>
+                        <td>{{ $course->training_center_id }}</td>
+        
+                        <td>
+                            <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($courses as $course)
-                        <tr>
-                            <td>{{ $course->id }}</td>
-                            <td>{{ $course->course_number }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-</div>
 @endsection

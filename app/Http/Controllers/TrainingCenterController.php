@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 
 class TrainingCenterController extends Controller
 {
-     public function index(){
-
-        $training_centers=Training_center::all();
-
-        return view('trainingcenters.index',compact('training_centers'));
-     }
     //
 
+    public function index(){
+
+        $Training_centers=Training_center::all();
+
+        return view('trainingcenters.index',compact('Training_centers'));
+
+
+    }
     public function registro(){
         return view('trainingcenters.registrar');
     }
@@ -22,7 +24,13 @@ class TrainingCenterController extends Controller
     public function dato(Request $request){
         Training_center::create($request->all());
     }
+    public function show ($id){
 
+     $Training_centers=Training_center::find($id);
+       return view('trainingcenters.show',compact('Training_centers'));
+
+
+    }
 
 
 

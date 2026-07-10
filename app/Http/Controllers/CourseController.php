@@ -9,23 +9,35 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-     public function index(){
+    //
+
+    public function index(){
 
         $courses=Course::all();
 
         return view('course.index',compact('courses'));
-     }
-    //
+
+
+    }
+
     public function registro(){
 
      $areas=Area::all();
      $training_centers=Training_center::all();
-        return view('course.registro',compact('areas','training_centers'));
+        return view('couser.registro',compact('areas','training_centers'));
      
 
     }
     
     public function dato(Request $request){
         Course::create($request->all());
+    }
+
+    public function show ($id){
+
+     $courses=Course::find($id);
+       return view('course.show',compact('courses'));
+
+
     }
 }

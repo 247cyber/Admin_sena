@@ -17,5 +17,4 @@ class Computer extends Model
         'brand',
     ];
 
-    
 }

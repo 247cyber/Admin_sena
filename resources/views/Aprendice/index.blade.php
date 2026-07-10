@@ -1,34 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
-    <div class="card shadow">
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            <h4 class="mb-0">Lista de Aprendices</h4>
-            <a href="{{ route('Aprendice.registro') }}" class="btn btn-primary btn-sm fw-bold">Nuevo Aprendiz</a>
-        </div>
-        <div class="table-responsive p-3">
-            <table class="table table-striped table-hover align-middle text-center">
-                <thead class="table-dark">
+    <h1 class="text-center my-4">LISTA DE APRENDICES</h1>
+
+    <div class="container">
+        <table id="idApprentice" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Numero de Celular</th>
+                    <th>course_id</th>
+                    <th>computer_id</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <a href="{{ route('apprentice.registro') }}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Nuevo Aprendis
+                </a>
+                <br><br>
+                @foreach ($apprentices as $apprentice)
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Celular</th>
+                        <td>{{ $aprentice->id }}</td> 
+                        <td>{{ $aprentice->name}}</td> 
+                        <td>{{ $aprentice->email}}</td> 
+                        <td>{{ $aprentice->cell_number}}</td> 
+                        <td>{{ $aprentice->computer_id }}</td>
+                        <td>{{ $aprentice->computer_id }}</td>
+        
+                        <td>
+                            <a href="{{ route('apprentice.show', $apprentice->id) }}" class="btn btn-primary btn-sm">Mostrar</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($apprentices as $aprendiz)
-                        <tr>
-                            <td>{{ $aprendiz->id }}</td>
-                            <td>{{ $aprendiz->name }}</td>
-                            <td>{{ $aprendiz->email }}</td>
-                            <td>{{ $aprendiz->cell_number }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-</div>
 @endsection

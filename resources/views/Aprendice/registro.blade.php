@@ -1,42 +1,40 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="card shadow p-4">
-    <h2 class="mb-4 text-center">Registro de Aprendiz</h2>
+    @section('content')
+        <form action="{{ route('apprentice.admin') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <label>
+                Nombre:
+                <br>
+                <input type="text" name="name">
+            </label>
+            <br>
+            <label>
+                email:
+                <br>
+                <input type="email" name="email">
+            </label>
+            <br>
+            <label>
+                numero de celular:
+                <br>
+                <input type="number" name="cell_number">
+            </label>
+            <br>
+            <label for="course_id">Usuario</label>
 
-    <form action="{{ route('Aprendice.admin') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        
-        <div class="mb-3">
-            <label class="form-label">Nombre:</label>
-            <input type="text" name="name" class="form-control">
-        </div>
+            <select name="course_id" id="course_id" class="form-control">
+                <option value="">Seleccione un cursos</option>
 
-        <div class="mb-3">
-            <label class="form-label">Email:</label>
-            <input type="email" name="email" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Número de Celular:</label>
-            <input type="number" name="cell_number" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label for="course_id" class="form-label">Curso:</label>
-            <select name="course_id" id="course_id" class="form-select">
-                <option value="">Seleccione un curso</option>
                 @foreach ($courses as $course)
                     <option value="{{ $course->id }}">
                         {{ $course->course_number }}
                     </option>
                 @endforeach
             </select>
-        </div>
+            <br>
+            <select name="computer_id">
 
-        <div class="mb-3">
-            <label for="computer_id" class="form-label">Computador Asignado:</label>
-            <select name="computer_id" id="computer_id" class="form-select">
                 <option value="">Seleccione un computador</option>
                 @foreach ($computers as $computer)
                     <option value="{{ $computer->id }}">
@@ -44,9 +42,7 @@
                     </option>
                 @endforeach
             </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Enviar Formulario</button>
-    </form>
-</div>
+            <br><br>
+            <button type="submit">Enviar Formulario</button>
+        </form>
 @endsection

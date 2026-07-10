@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($computers as $computer)
+                    @foreach ($computer as $computer)
                         <tr>
                             <td>{{ $computer->id }}</td>
                             <td>{{ $computer->number }}</td>
