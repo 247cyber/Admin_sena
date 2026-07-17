@@ -32,6 +32,26 @@ class ComputerController extends Controller
 
 
     }
+     public function edit(Computer $computer)
+    { //Encuentro el Curso
 
+        return view('computer.edit', compact('computer'));
+    }
+
+     public function update(Request $request, Computer $computer){
+
+        $computer->number = $request->number;
+        $computer->brand = $request->brand;
+        $computer->save();
+
+        return redirect()->route('computer.index');
+
+      }
+      //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Computer $computer)
+    {
+        $computer->delete();
+        return redirect()->route('computer.index');
+    }
 
 }

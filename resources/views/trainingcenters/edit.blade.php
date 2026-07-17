@@ -7,12 +7,13 @@
 
             <div class="card shadow border-0 rounded-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Registrar Centro de Formación</h4>
+                    <h4 class="mb-0">Actualizar Centro de Formación</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('trainingcenters.datos') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('trainingcenters.update', $Training_centers) }}" method="POST">
                         @csrf
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
@@ -22,6 +23,7 @@
                                 type="text"
                                 name="name"
                                 class="form-control"
+                                value="{{ old('name', $Training_centers->name) }}"
                                 placeholder="Ingrese el nombre del centro">
                         </div>
 
@@ -33,12 +35,20 @@
                                 type="text"
                                 name="location"
                                 class="form-control"
-                                placeholder="Ingrese la ubicación del centro">
+                                value="{{ old('location', $Training_centers->location) }}"
+                                placeholder="Ingrese la ubicación">
                         </div>
 
-                        <button type="submit" class="btn btn-success">
-                            Enviar Formulario
-                        </button>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                                Cancelar
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Actualizar Centro
+                            </button>
+                        </div>
+
                     </form>
                 </div>
 

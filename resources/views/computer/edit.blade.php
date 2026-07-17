@@ -7,38 +7,48 @@
 
             <div class="card shadow border-0 rounded-4">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Registrar Centro de Formación</h4>
+                    <h4 class="mb-0">Actualizar Computador</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('trainingcenters.datos') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('computer.update', $computer) }}" method="POST">
                         @csrf
+                        @method('PUT')
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
-                                Nombre
+                                Número
                             </label>
                             <input
                                 type="text"
-                                name="name"
+                                name="number"
                                 class="form-control"
-                                placeholder="Ingrese el nombre del centro">
+                                value="{{ old('number', $computer->number) }}"
+                                placeholder="Ingrese el número del computador">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">
-                                Ubicación
+                                Marca
                             </label>
                             <input
                                 type="text"
-                                name="location"
+                                name="brand"
                                 class="form-control"
-                                placeholder="Ingrese la ubicación del centro">
+                                value="{{ old('brand', $computer->brand) }}"
+                                placeholder="Ingrese la marca">
                         </div>
 
-                        <button type="submit" class="btn btn-success">
-                            Enviar Formulario
-                        </button>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary">
+                                Cancelar
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Actualizar Computador
+                            </button>
+                        </div>
+
                     </form>
                 </div>
 

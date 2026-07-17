@@ -16,7 +16,7 @@ class ApprenticeController extends Controller
 
         $apprentices=Apprentice::all();
 
-        return view('aprendice.index',compact('apprentices'));
+        return view('Aprendice\index',compact('apprentices'));
 
 
     }
@@ -25,7 +25,7 @@ class ApprenticeController extends Controller
 
      $courses=Course::all();
      $computers=Computer::all();
-        return view('aprendice.registro',compact('courses','computers'));
+        return view('Aprendice\registro',compact('courses','computers'));
     }
     
     public function dato(Request $request){
@@ -35,10 +35,34 @@ class ApprenticeController extends Controller
     public function show ($id){
 
      $apprentices=Apprentice::find($id);
-       return view('apprentice.show',compact('apprentices'));
+       return view('Aprendice.show',compact('apprentices'));
 
 
     }
+    public function edit(Apprentice $apprentices)
+    {
+        // Traemos todos los registros de las tablas foráneas
+        $courses = Course::all();
+        $computers = Computer::all();
+
+        //  Enviamos todo a la vista con compact
+        return view('Aprendice.edit', compact('apprentices', 'courses', 'computers'));
+    }
+
+    public function update(Request $request, Apprentice $apprentices)
+    {
+
+        $apprentices->update($request->all());
+
+        return redirect()->route('Aprendice\index');
+    }
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Apprentice $apprentices)
+    {
+        $apprentices->delete();
+        return redirect()->route('Aprendice.index');
+    }
+
 
     
 }

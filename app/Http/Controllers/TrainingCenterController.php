@@ -31,8 +31,26 @@ class TrainingCenterController extends Controller
 
 
     }
+    public function edit(Training_center $Training_centers)
+    { //Encuentro el Curso
 
+        return view('trainingcenters.edit', compact('Training_centers'));
+    }
+    public function update(Request $request, Training_center $Training_centers){
 
+        $Training_centers->name = $request->name;
+       $Training_centers->location = $request->location;
+        $Training_centers->save();
+
+        return redirect()->route('trainingcenters.index');
+
+      }
+      //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Training_center $Training_centers)
+    {
+        $Training_centers->delete();
+        return redirect()->route('trainingcenters.index');
+    }
 
 
     
